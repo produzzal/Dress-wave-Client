@@ -8,17 +8,21 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedUser = localStorage.getItem("user");
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
-      }
-    }
-  }, []);
+  const user = {
+    role: "admin",
+  };
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const storedUser = localStorage.getItem("user");
+  //     if (storedUser) {
+  //       setUser(JSON.parse(storedUser));
+  //     }
+  //   }
+  // }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -103,16 +107,14 @@ export default function Navbar() {
         }`}
       >
         <ul className="menu p-4 text-black">
-          {user?.role === "super-admin" ||
-          user?.role === "admin" ||
-          user?.role === "moderator" ? (
+          {user?.role === "admin" ? (
             <details className="relative">
               <summary className="text-xl mb-5 cursor-pointer list-none">
                 Dashboard
               </summary>
 
               <ul className="rounded-t-none p-2 mb-5 font-serif">
-                {user?.role === "super-admin" && (
+                {user?.role === "admin" && (
                   <li className="border-b-1" onClick={() => setIsOpen(false)}>
                     <Link href="/admin/add-user">Add User</Link>
                   </li>
