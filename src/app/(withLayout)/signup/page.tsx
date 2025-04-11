@@ -23,16 +23,13 @@ export default function SignupPage() {
   const router = useRouter();
 
   const onSubmit = async (userData: TUser) => {
-    const res = await fetch(
-      "https://dress-wave-server.vercel.app/api/auth/signup",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      }
-    );
+    const res = await fetch("http://localhost:5000/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
     const data = await res.json();
     if (data?.success === true) {
       toast.success(data?.message);
