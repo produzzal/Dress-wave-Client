@@ -1,4 +1,5 @@
 // app/layout.tsx
+import { ToastContainer } from "react-toastify";
 import "./globals.css";
 import type { Metadata } from "next";
 
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen">
-        <main>{children}</main>
+        <main>
+          {children}
+          <ToastContainer />
+        </main>
       </body>
     </html>
   );

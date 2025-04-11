@@ -4,7 +4,7 @@ import ProfileIcon from "@/components/ProfileIcon/ProfileIcon";
 import SearchIcon from "@/components/SearchIcon/SearchIcon";
 import Shop from "@/components/ShopIcon/Shop";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
