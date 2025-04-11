@@ -2,10 +2,12 @@
 "use client";
 
 import { TProduct } from "@/components/utils/types/product.interface";
+import { useEffect, useState } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { toast } from "react-toastify";
 
 export default function AddProductPage() {
+  const [accessToken, setAccessToken] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -22,10 +24,20 @@ export default function AddProductPage() {
     name: "images",
   });
 
-  const token = localStorage.getItem("accessToken");
-  const accessToken = token?.replace(/^"|"$/g, "");
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      const cleanToken = token.replace(/^"|"$/g, "");
+      setAccessToken(cleanToken);
+    }
+  }, []);
 
   const onSubmit = async (data: TProduct) => {
+    if (!accessToken) {
+      toast.error("Access token not found");
+      return;
+    }
+
     const payload = {
       ...data,
       images: data.images.map((img) => img.url),
