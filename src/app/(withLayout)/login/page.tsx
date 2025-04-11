@@ -33,6 +33,7 @@ export default function LoginPage() {
       if (data?.success === true) {
         toast.success(data?.message);
         localStorage.setItem("user", JSON.stringify(data.data));
+        localStorage.setItem("accessToken", JSON.stringify(data.token));
         window.dispatchEvent(new Event("userUpdated"));
         setTimeout(() => {
           router.push("/");

@@ -11,4 +11,5 @@ export type TLogin = {
   email: string;
   password: string;
   profilePicture?: string;
+  role?: string;
 };

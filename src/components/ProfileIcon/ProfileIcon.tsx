@@ -70,6 +70,7 @@ const ProfileIcon = () => {
     if (data.success === true) {
       toast.success(data?.message);
       localStorage.removeItem("user");
+      localStorage.removeItem("accessToken");
       window.dispatchEvent(new Event("userUpdated"));
       setIsDropdownOpen(false);
       setTimeout(() => {
@@ -134,6 +135,25 @@ const ProfileIcon = () => {
                   </Link>
                 </li>
               </>
+            )}
+            {user?.role === "admin" ? (
+              <li>
+                <Link
+                  href="/admin/add-product"
+                  className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >
+                  Add Product
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  href={""}
+                  className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >
+                  Logout
+                </Link>
+              </li>
             )}
             {user && (
               <li>
