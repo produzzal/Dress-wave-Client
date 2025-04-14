@@ -60,6 +60,7 @@ export default function AddProductPage() {
         }
       );
       const data = await res.json();
+      console.log(data);
 
       if (data.success === true) {
         toast.success(data.message);

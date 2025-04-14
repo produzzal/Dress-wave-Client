@@ -112,7 +112,7 @@ const ProfileIcon = () => {
       </div>
 
       {isDropdownOpen && (
-        <div className="absolute right-0 mt-2 w-32 bg-white border rounded-lg shadow-lg z-10">
+        <div className="absolute right-0 mt-2 w-48 md:w-60 text-sm md:text-lg bg-white border rounded-lg shadow-lg z-10">
           <ul>
             {!user && (
               <>
@@ -122,7 +122,7 @@ const ProfileIcon = () => {
                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                     onClick={() => setIsDropdownOpen(false)}
                   >
-                    Signup
+                    📝 Signup
                   </Link>
                 </li>
                 <li>
@@ -131,37 +131,49 @@ const ProfileIcon = () => {
                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                     onClick={() => setIsDropdownOpen(false)}
                   >
-                    Login
+                    🔑 Login
                   </Link>
                 </li>
               </>
             )}
             {user?.role === "admin" ? (
-              <li>
-                <Link
-                  href="/admin/add-product"
-                  className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
-                >
-                  Add Product
-                </Link>
-              </li>
-            ) : (
-              <li>
-                <Link
-                  href={""}
-                  className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
-                >
-                  Logout
-                </Link>
-              </li>
-            )}
+              <ul>
+                <li tabIndex={0}>
+                  <details>
+                    <summary className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
+                      🛍️ Product Management
+                    </summary>
+                    <ul className="ml-4 mt-1 space-y-1">
+                      <li>
+                        <Link
+                          href="/admin/add-product"
+                          className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                        >
+                          ➕ Add Product
+                        </Link>
+                      </li>
+
+                      <li>
+                        <Link
+                          href="/admin/view-products"
+                          className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                        >
+                          👁️ View Products
+                        </Link>
+                      </li>
+                    </ul>
+                  </details>
+                </li>
+              </ul>
+            ) : null}
+
             {user && (
               <li>
                 <button
                   onClick={handleLogout}
                   className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
                 >
-                  Logout
+                  🔒 Logout
                 </button>
               </li>
             )}

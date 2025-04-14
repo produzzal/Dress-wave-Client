@@ -69,12 +69,8 @@ export default function Navbar() {
         </button>
 
         {/* Logo */}
-        <Link href="/" className="h-10 w-40 md:w-60 ml-5 md:ml-10 ">
-          <img
-            src="https://i.ibb.co.com/DPRk96gL/Anizen-Logo.png"
-            alt="Logo"
-            className="h-full"
-          />
+        <Link href="/" className="ml-5 md:ml-10 ">
+          <img src="/dress-wave-logo.png" alt="Logo" className="h-full w-52" />
         </Link>
         <div className="hidden md:block md:ml-15 md:mr-5">
           <Shop />
