@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { TProduct } from "@/components/utils/types/product.interface";
+import Link from "next/link";
 import React from "react";
+import { DiVim } from "react-icons/di";
 
 const fetchProducts = async () => {
   const res = await fetch("https://dress-wave-server.vercel.app/api/products", {
@@ -57,7 +59,14 @@ const AdminProductTable: React.FC = async () => {
                   {product.productName}
                 </td>
                 <td className="px-4 py-3 text-sm text-gray-800">
-                  ৳{product.price}
+                  {product.discountPrice ? (
+                    <div>
+                      <span className="line-through">৳{product.price}</span> ৳
+                      {product.discountPrice}
+                    </div>
+                  ) : (
+                    <div>৳{product.price}</div>
+                  )}
                 </td>
                 <td className="px-4 py-3 text-sm text-gray-800">
                   {product.category}
@@ -66,9 +75,12 @@ const AdminProductTable: React.FC = async () => {
                   {product.brand}
                 </td>
                 <td className="px-4 py-3 space-x-2">
-                  <button className="bg-blue-500 hover:bg-blue-600 text-white text-sm px-3 py-1 rounded">
-                    ✏️ Edit
-                  </button>
+                  <Link
+                    href={`/admin/update-product/${product._id}`}
+                    className="bg-green-500 hover:bg-green-600 text-white text-center text-sm px-3 py-[6px] rounded"
+                  >
+                    ✏️ Update
+                  </Link>
                   <button className="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded">
                     🚫 Delete
                   </button>
@@ -91,7 +103,16 @@ const AdminProductTable: React.FC = async () => {
               />
               <div>
                 <h2 className="text-sm font-semibold">{product.productName}</h2>
-                <p className="text-sm text-gray-500">৳{product.price}</p>
+                <p className="text-sm text-gray-500">
+                  {product.discountPrice ? (
+                    <div>
+                      <span className="line-through"> ৳{product.price}</span> ৳
+                      {product.discountPrice}
+                    </div>
+                  ) : (
+                    <div>৳{product.price}</div>
+                  )}
+                </p>
                 <p className="text-xs text-gray-400">
                   Category: {product.category}
                 </p>
@@ -99,9 +120,12 @@ const AdminProductTable: React.FC = async () => {
               </div>
             </div>
             <div className="mt-3 flex space-x-2">
-              <button className="bg-blue-500 hover:bg-blue-600 text-white text-sm px-3 py-1 rounded w-full">
-                ✏️ Edit
-              </button>
+              <Link
+                href={`/admin/update-product/${product._id}`}
+                className="bg-green-500 text-center hover:bg-green-600 text-white text-sm px-3 py-1 rounded w-full"
+              >
+                ✏️ Update
+              </Link>
               <button className="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded w-full">
                 🚫 Delete
               </button>
