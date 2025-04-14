@@ -28,10 +28,7 @@ export const metadata: Metadata = {
 const getProduct = async (productId: string): Promise<Product | null> => {
   try {
     const res = await fetch(
-      `https://dress-wave-server.vercel.app/api/products/${productId}`,
-      {
-        cache: "no-store",
-      }
+      `https://dress-wave-server.vercel.app/api/products/${productId}`
     );
     const json = await res.json();
     return json?.data ?? null;
