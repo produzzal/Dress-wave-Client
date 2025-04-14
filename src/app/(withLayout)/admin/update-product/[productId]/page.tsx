@@ -2,15 +2,16 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { toast } from "react-toastify";
 import { TProduct } from "@/components/utils/types/product.interface";
+import Loading from "@/app/loading";
 
 export default function UpdateProductPage({ params }: { params: any }) {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const { productId } = params;
+  const { productId }: { productId: any } = React.use(params);
 
   const {
     register,
@@ -95,12 +96,14 @@ export default function UpdateProductPage({ params }: { params: any }) {
   };
 
   if (isLoading) {
-    return <div className="text-center py-10 text-gray-500">Loading...</div>;
+    return <Loading />;
   }
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-xl mt-10">
-      <h1 className="text-3xl font-bold mb-8 text-center">Update Product</h1>
+      <h1 className="text-2xl text-center font-semibold text-gray-500">
+        Update Product (Admin View)
+      </h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {[
           { name: "productName", label: "Product Name", type: "text" },
