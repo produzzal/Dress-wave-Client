@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ImageGallery from "@/components/ImageGallery/ImageGallery";
 import { Metadata } from "next";
+import React from "react";
 
 interface Product {
   _id: string;
@@ -39,11 +41,7 @@ const getProduct = async (productId: string): Promise<Product | null> => {
   }
 };
 
-const ProductDetailPage = async ({
-  params,
-}: {
-  params: { productId: string };
-}) => {
+const ProductDetailPage = async ({ params }: { params: any }) => {
   const product = await getProduct(params.productId);
 
   if (!product) {
