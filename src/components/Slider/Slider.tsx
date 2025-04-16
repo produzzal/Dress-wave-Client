@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Link from "next/link";
+import Image from "next/image";
 
 const Slider = () => {
   return (
@@ -16,12 +17,13 @@ const Slider = () => {
       >
         {/* Image 1 */}
         <SwiperSlide>
-          <Link href={"/shop"}>
-            <div className="w-full h-[200px] md:h-[400px] relative">
-              <img
-                src="https://i.ibb.co/4zj38h1/shopping-online-in-smartphone-application-vector-33184025.jpg"
+          <Link href="/shop">
+            <div className="w-full h-[250px] md:h-[400px] relative">
+              <Image
+                src="/itachi-header.png"
                 alt="Slide 1"
-                className="absolute inset-0 w-full h-full object-cover object-center"
+                fill
+                className="object-cover object-center"
               />
             </div>
           </Link>
@@ -29,12 +31,13 @@ const Slider = () => {
 
         {/* Image 2 */}
         <SwiperSlide>
-          <Link href={"/shop"}>
-            <div className="w-full h-[200px] md:h-[400px] relative">
-              <img
-                src="https://i.ibb.co.com/pvTHY3h5/Online-Shopping-Banner-Mobile-App-Vector.jpg"
-                alt="Slide 2"
-                className="absolute inset-0 w-full h-full object-cover object-center"
+          <Link href="/shop">
+            <div className="w-full h-[250px] md:h-[400px] relative">
+              <Image
+                src="/naruto-hinata-header.png"
+                alt="Slide 1"
+                fill
+                className="object-cover object-center"
               />
             </div>
           </Link>
@@ -42,12 +45,13 @@ const Slider = () => {
 
         {/* Image 3 */}
         <SwiperSlide>
-          <Link href={"/shop"}>
-            <div className="w-full h-[200px] md:h-[400px] relative">
-              <img
-                src="https://i.ibb.co.com/yFBxKLVX/online-shopping-banner-82574-3393.jpg"
-                alt="Slide 3"
-                className="absolute inset-0 w-full h-full object-cover object-center"
+          <Link href="/shop">
+            <div className="w-full h-[250px] md:h-[400px] relative">
+              <Image
+                src="/naruto-family-header.png"
+                alt="Slide 1"
+                fill
+                className="object-cover object-center"
               />
             </div>
           </Link>

@@ -8,6 +8,8 @@ export type TProduct = {
   brand: string;
   category: string;
   subcategory: string;
+  color: string[];
+  size: string[];
   stockAvailability: number;
   thumbnail: string;
   images: { url: string }[];

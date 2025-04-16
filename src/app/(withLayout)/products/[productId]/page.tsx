@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import AddToCart from "@/components/AddToCart/AddToCart";
 import ImageGallery from "@/components/ImageGallery/ImageGallery";
 import { Metadata } from "next";
 import React from "react";
@@ -45,8 +46,6 @@ const ProductDetailPage = async ({ params }: { params: any }) => {
     return <div className="text-center py-10">Product not found.</div>;
   }
 
-  const sizeOptions = ["M", "L", "XL", "XXL"];
-
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -92,44 +91,7 @@ const ProductDetailPage = async ({ params }: { params: any }) => {
               {product.stockAvailability} Piece
             </p>
           </div>
-
-          {/* Size and Quantity Selector */}
-          <div className=" space-y-4 flex items-center space-x-4">
-            {/* Size Selector */}
-            {sizeOptions?.length > 0 && (
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mt-3">
-                  Size
-                </label>
-                <select className="border rounded px-3 py-2 w-full mb-3">
-                  {sizeOptions.map((size, index) => (
-                    <option key={index} value={size}>
-                      {size}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
-
-            {/* Quantity Selector */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Quantity
-              </label>
-              <input
-                type="number"
-                min={1}
-                max={product.stockAvailability}
-                defaultValue={1}
-                className="border rounded px-3 py-2 w-24"
-              />
-            </div>
-            <div>
-              <button className="bg-gray-400 hover:bg-gray-500 text-white px-3 py-[9px] rounded">
-                Add to Cart
-              </button>
-            </div>
-          </div>
+          <AddToCart product={product} />
           <p className="text-gray-600 pt-3 border-t pb-3">
             {product.description}
           </p>

@@ -3,7 +3,6 @@ import DeleteProduct from "@/components/ProductDelete/DeleteMethod";
 import { TProduct } from "@/components/utils/types/product.interface";
 import Link from "next/link";
 import React from "react";
-import { DiVim } from "react-icons/di";
 
 const fetchProducts = async () => {
   const res = await fetch("https://dress-wave-server.vercel.app/api/products", {

@@ -67,6 +67,16 @@ export default function UpdateProductPage({ params }: { params: any }) {
     const payload = {
       ...data,
       images: data.images?.map((img) => img.url),
+      color: data.color
+        ? String(data.color)
+            .split(",")
+            .map((color) => color.trim())
+        : [],
+      size: data.size
+        ? String(data.size)
+            .split(",")
+            .map((size) => size.trim())
+        : [],
     };
 
     try {
@@ -82,8 +92,10 @@ export default function UpdateProductPage({ params }: { params: any }) {
           credentials: "include",
         }
       );
+      console.log(data);
 
       const result = await res.json();
+      console.log(result);
 
       if (result.success) {
         toast.success(result.message || "Product updated successfully!");
@@ -133,7 +145,23 @@ export default function UpdateProductPage({ params }: { params: any }) {
             )}
           </div>
         ))}
+        <div>
+          <label className="block font-medium mb-1">Color</label>
+          <input
+            {...register("color", { required: false })}
+            placeholder="e.g. red, yellow"
+            className="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
 
+        <div>
+          <label className="block font-medium mb-1">Size</label>
+          <input
+            {...register("size", { required: false })}
+            placeholder="e.g. S, M, L"
+            className="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
         <div>
           <label className="block font-medium mb-2">Images</label>
           {fields.map((field, index) => (

@@ -46,6 +46,11 @@ export default function LoginPage() {
       console.error("Login error:", error);
     }
   };
+  // const handleGoogleLogin = async () => {
+  //   signIn("google", {
+  //     // callbackUrl: "http://localhost:3000",
+  //   });
+  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 px-4">
@@ -95,6 +100,22 @@ export default function LoginPage() {
         >
           Login
         </button>
+
+        {/* Google Login Button */}
+        {/* <button
+          type="button"
+          onClick={handleGoogleLogin} // Define this function in your component
+          className="w-full flex items-center justify-center gap-2 border border-gray-300 py-3 rounded-xl hover:bg-gray-100 transition duration-300"
+        >
+          <img
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+            alt="Google"
+            className="w-5 h-5"
+          />
+          <span className="text-sm font-medium text-gray-700">
+            Continue with Google
+          </span>
+        </button> */}
 
         <p className="text-center text-sm">
           New here?{" "}

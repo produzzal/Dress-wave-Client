@@ -16,6 +16,8 @@ export default function AddProductPage() {
   } = useForm<TProduct>({
     defaultValues: {
       images: [{ url: "" }],
+      color: [],
+      size: [],
     },
   });
 
@@ -41,6 +43,16 @@ export default function AddProductPage() {
     const payload = {
       ...data,
       images: data.images.map((img) => img.url),
+      color: data.color
+        ? String(data.color)
+            .split(",")
+            .map((color) => color.trim())
+        : [],
+      size: data.size
+        ? String(data.size)
+            .split(",")
+            .map((size) => size.trim())
+        : [],
       price: Number(data.price),
       discountPrice: Number(data.discountPrice),
       stockAvailability: Number(data.stockAvailability),
@@ -60,7 +72,6 @@ export default function AddProductPage() {
         }
       );
       const data = await res.json();
-      console.log(data);
 
       if (data.success === true) {
         toast.success(data.message);
@@ -104,6 +115,23 @@ export default function AddProductPage() {
             )}
           </div>
         ))}
+        <div>
+          <label className="block font-medium mb-1">Color</label>
+          <input
+            {...register("color", { required: true })}
+            placeholder="e.g. red, yellow"
+            className="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div>
+          <label className="block font-medium mb-1">Size</label>
+          <input
+            {...register("size", { required: true })}
+            placeholder="e.g. S, M, L"
+            className="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
 
         <div>
           <label className="block font-medium mb-2">Images</label>
