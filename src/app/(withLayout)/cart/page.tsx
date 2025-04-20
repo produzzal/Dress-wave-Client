@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const CartPage = () => {
+  const router = useRouter();
   const [cartItems, setCartItems] = useState<any[]>([]);
 
   useEffect(() => {
@@ -46,18 +48,29 @@ const CartPage = () => {
     }, 1500);
   };
 
-  const handleQuantityChange = (itemId: string, newQuantity: number) => {
+  const handleQuantityChange = (
+    itemId: string,
+    itemColor: string,
+    itemSize: string,
+    newQuantity: number
+  ) => {
     const updatedCart = cartItems.map((item) =>
-      item.id === itemId ? { ...item, quantity: newQuantity } : item
+      item.id === itemId && item.color === itemColor && item.size === itemSize
+        ? { ...item, quantity: newQuantity }
+        : item
     );
     setCartItems(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update localStorage
   };
 
   const handlePlaceOrder = () => {
-    alert("Order placed!");
-    setCartItems([]);
-    localStorage.removeItem("cart");
+    if (cartItems.length === 0) {
+      toast.error(
+        "Your cart is empty. Please add products to cart before placing order."
+      );
+      return;
+    }
+    router.push("/order");
   };
 
   return (
@@ -121,6 +134,8 @@ const CartPage = () => {
                         onClick={() =>
                           handleQuantityChange(
                             item.id,
+                            item.color,
+                            item.size,
                             Math.max(1, item.quantity - 1)
                           )
                         }
@@ -136,7 +151,12 @@ const CartPage = () => {
                       />
                       <button
                         onClick={() =>
-                          handleQuantityChange(item.id, item.quantity + 1)
+                          handleQuantityChange(
+                            item.id,
+                            item.color,
+                            item.size,
+                            item.quantity + 1
+                          )
                         }
                         className="px-3 py-1 border rounded text-lg"
                       >
@@ -208,7 +228,9 @@ const CartPage = () => {
                     onClick={() =>
                       handleQuantityChange(
                         item.id,
-                        Math.max(1, item.quantity - 1)
+                        item.color,
+                        item.size,
+                        item.quantity - 1
                       )
                     }
                     className="px-3 py-1 border rounded text-lg"
@@ -223,7 +245,12 @@ const CartPage = () => {
                   />
                   <button
                     onClick={() =>
-                      handleQuantityChange(item.id, item.quantity + 1)
+                      handleQuantityChange(
+                        item.id,
+                        item.color,
+                        item.size,
+                        item.quantity + 1
+                      )
                     }
                     className="px-3 py-1 border rounded text-lg"
                   >

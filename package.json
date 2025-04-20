@@ -1,12 +1,11 @@
 {
-  "name": "kaporkino-client",
+  "name": "dresswave-client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "daisyui": "^5.0.16",

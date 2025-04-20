@@ -147,6 +147,7 @@ const ProfileIcon = () => {
                       <li>
                         <Link
                           href="/admin/add-product"
+                          onClick={() => setIsDropdownOpen(false)}
                           className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                         >
                           ➕ Add Product
@@ -156,9 +157,28 @@ const ProfileIcon = () => {
                       <li>
                         <Link
                           href="/admin/view-products"
+                          onClick={() => setIsDropdownOpen(false)}
                           className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                         >
                           👁️ View Products
+                        </Link>
+                      </li>
+                    </ul>
+                  </details>
+                </li>
+                <li tabIndex={0}>
+                  <details>
+                    <summary className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
+                      📦 Order Management
+                    </summary>
+                    <ul className="ml-4 mt-1 space-y-1">
+                      <li>
+                        <Link
+                          href="/admin/view-orders"
+                          onClick={() => setIsDropdownOpen(false)}
+                          className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                        >
+                          👁️ View Orders
                         </Link>
                       </li>
                     </ul>
