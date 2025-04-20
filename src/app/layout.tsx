@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "DressWave",
     images: [
       {
-        url: "https://dresswave.onrender.com/dress-wave-logo.png",
+        url: "https://dresswave.onrender.com/metalogo.png",
         width: 1200,
         height: 630,
         alt: "Dress Wave Online Shop",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dress Wave - Buy Stylish Dresses Online",
     description: "Explore trending fashion and shop your favorite outfits.",
-    images: ["https://dresswave.onrender.com/dress-wave-logo.png"],
+    images: ["https://dresswave.onrender.com/metalogo.png"],
 
     creator: "@pro_d_uzzal",
   },

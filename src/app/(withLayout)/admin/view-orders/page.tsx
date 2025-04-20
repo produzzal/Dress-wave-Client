@@ -14,13 +14,11 @@ type Order = {
 
 const OrderManagementPage = () => {
   const [orders, setOrders] = useState<Order[]>([]);
-  const [token, setToken] = useState("");
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    const access =
-      localStorage.getItem("accessToken")?.replace(/^"|"$/g, "") || "";
-    setToken(access);
-  }, []);
+  const token =
+    typeof window !== "undefined"
+      ? localStorage.getItem("accessToken")?.replace(/^"|"$/g, "") || ""
+      : "";
 
   const fetchOrders = async () => {
     setLoading(true);
